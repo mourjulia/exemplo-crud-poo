@@ -32,7 +32,7 @@ final class FabricanteServicos {
     $sql = "INSERT INTO fabricantes(nome) VALUES(:nome)";
         
         try {
-            $consulta = $conexao->prepare($sql);
+            $consulta = $this->conexao->prepare($sql);
             $consulta->bindValue(":nome", $fabricante->getNome(), PDO::PARAM_STR);        
             $consulta->execute();
         } catch (Throwable $erro) {

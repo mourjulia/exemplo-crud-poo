@@ -31,7 +31,7 @@ final class Fabricante {
 
     private function setId(?int $id): void 
     {
-        $this->id = id;
+        $this->id = $id;
     } 
 
     private function setNome(string $nome): void 
