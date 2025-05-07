@@ -1,5 +1,5 @@
 <?php
-namespace ExemploCrud;
+namespace ExemploCrud\Models;
 
 final class Fabricante {
     private ?int $id; // null | int
