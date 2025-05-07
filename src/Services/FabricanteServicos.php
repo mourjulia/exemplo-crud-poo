@@ -2,9 +2,11 @@
 namespace ExemploCrud\Services;
 
 use PDO;
-use ExemploCrud\ConexaoBD;
 use Throwable;
 use Exception;
+
+use ExemploCrud\Database\conexaoBD;
+
 
 final class FabricanteServicos {
     private PDO $conexao;
