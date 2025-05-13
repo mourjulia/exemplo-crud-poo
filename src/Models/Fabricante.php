@@ -1,6 +1,8 @@
 <?php
 namespace ExemploCrud\Models;
 
+use InvalidArgumentException;
+
 final class Fabricante {
     private ?int $id; // null | int
     private string $nome;

@@ -1,11 +1,6 @@
 <?php
 require_once "conecta.php";
 
-/* Lógica/Funções para o CRUD de Fabricantes */
-
-
-
-// listarUmFabricante: usada pela página fabricantes/atualizar.php
 function listarUmFabricante(PDO $conexao, int $idFabricante):array {
     $sql = "SELECT * FROM fabricantes WHERE id = :id";
 
