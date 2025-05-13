@@ -1,10 +1,15 @@
 <?php
-require_once "../src/funcoes-fabricantes.php";
+
+use ExemploCrud\Services\FabricanteServicos;
+
+require_once "../vendor/autoload.php";
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
+$fabricanteServico = new FabricanteServicos;
 
 /* Verificando se houve o "SIM" para excluir */
 if(isset($_GET['confirmar-exclusao'])){
-    excluirFabricante($conexao, $id);
+    $fabricanteServico->excluir($id);
     header("location:visualizar.php");
     exit;
 }
