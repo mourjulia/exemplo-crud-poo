@@ -1,11 +1,14 @@
 <?php
 
+namespace ExemploCrud\Services;
+
+use Exception;
 use ExemploCrud\Database\ConexaoBD;
 use ExemploCrud\Models\Produto;
+use PDO;
 use Throwable;
-use Exception;
 
-require_once "conecta.php";
+require_once "../vendor/autoload.php";
 
 final class ProdutoServico
 {
