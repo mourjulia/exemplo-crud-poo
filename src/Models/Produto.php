@@ -18,15 +18,15 @@ final class Produto
         float $preco,
         int $quantidade,
         int $fabricanteId,
-        ?int $id = null,
-        ?string $descricao = null
+        ?string $descricao = null,
+        ?int $id = null
     ) {
 
         $this->setNome($nome);
         $this->setPreco($preco);
         $this->setQuantidade($quantidade);
-        $this->setDescricao($descricao);
         $this->setFabricanteId($fabricanteId);
+        $this->setDescricao($descricao);
         $this->setId($id);
 
         $this->validar();
@@ -103,4 +103,3 @@ final class Produto
         $this->fabricanteId = $fabricanteId;
     }
 }
- 

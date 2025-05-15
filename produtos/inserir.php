@@ -4,83 +4,69 @@ use ExemploCrud\Models\Produto;
 use ExemploCrud\Services\ProdutoServico;
 use ExemploCrud\Services\FabricanteServicos;
 
-require_once "../src/funcoes-fabricantes.php";
-require_once "../src/funcoes-produtos.php";
-
 require_once "../vendor/autoload.php";
 
 $fabricanteServico =  new FabricanteServicos();
- 
+$produtoServico = new ProdutoServico();
+
 $listaDeFabricantes = $fabricanteServico->listarTodos();
- 
+
 if (isset($_POST["inserir"])) {
     // Capturar/sanitizar os dados
     $nome = filter_input(
         INPUT_POST,
         'nome',
-        FILTER_SANITIZE_FULL_SPECIAL_CHARS
+        FILTER_SANITIZE_SPECIAL_CHARS
     );
- 
+
     $preco = filter_input(
         INPUT_POST,
         'preco',
         FILTER_SANITIZE_NUMBER_FLOAT,
         FILTER_FLAG_ALLOW_FRACTION
     );
- 
+
     $quantidade = filter_input(
         INPUT_POST,
         'quantidade',
         FILTER_SANITIZE_NUMBER_INT
     );
- 
-    $fabricante = filter_input(
+
+    $fabricanteId = filter_input(
         INPUT_POST,
         'fabricante',
         FILTER_SANITIZE_NUMBER_INT
     );
- 
+
     $descricao = filter_input(
         INPUT_POST,
         'descricao',
         FILTER_SANITIZE_SPECIAL_CHARS
     );
 
-
-    $produtoServico = new ProdutoServico();
-    $produto = new Produto($nome, $preco, $quantidade, $fabricante, $descricao);
-
+    $produto = new Produto($nome, $preco, $quantidade, $fabricanteId, $descricao);
     $produtoServico->inserir($produto);
 
-inserirProduto(
-    $conexao,
-    $nome,
-    $preco,
-    $quantidade,
-    $fabricante,
-    $descricao
-);
- 
-header("location:visualizar.php");
-exit;
+    header("location:visualizar.php");
+    exit;
 }
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos - Inserção</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
- 
+
 <body>
     <div class="container mt-2 shadow-lg rounded pb-1">
         <h1><a class="btn btn-outline-dark" href="visualizar.php">&lt; Voltar</a> Produtos | INSERT</h1>
         <hr>
- 
+
         <form action="" method="post" class="w-50">
             <div class="mb-3">
                 <label class="form-label" for="nome">Nome:</label>
@@ -109,14 +95,11 @@ exit;
             </div>
             <button class="btn btn-success" type="submit" name="inserir">Inserir produto</button>
         </form>
- 
- 
+
+
     </div>
- 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
- 
+
 </html>
- 
-
-

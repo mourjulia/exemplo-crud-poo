@@ -1,7 +1,14 @@
 <?php // produtos/visualizar.php
-require_once "../src/funcoes-produtos.php";
+
+use ExemploCrud\Services\ProdutoServico;
+
+require_once "../vendor/autoload.php"; 
 require_once "../src/funcoes-utilitarias.php";
-$listaDeProdutos = listarProdutos($conexao);
+
+
+$produtoServico = new ProdutoServico();
+
+$listaDeProdutos = $produtoServico->listarProdutos();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
