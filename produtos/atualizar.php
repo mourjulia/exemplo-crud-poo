@@ -6,7 +6,6 @@ use ExemploCrud\Services\ProdutoServico;
 
 require_once "../vendor/autoload.php";
 
-
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 $fabricanteServico = new FabricanteServicos();
@@ -17,12 +16,12 @@ $listaDeFabricantes = $fabricanteServico->listarTodos();
 
 
 if(isset($_POST['atualizar'])){
-    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
     $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $quantidade = filter_input(INPUT_POST, "quantidade", FILTER_SANITIZE_NUMBER_INT);
     $fabricanteId = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
-    $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $atualizaProduto = new Produto($nome, $preco, $quantidade, $fabricanteId, $descricao);
+    $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_SPECIAL_CHARS);
+    $atualizaProduto = new Produto($nome, $preco, $quantidade, $fabricanteId, $descricao, $id);
     $produtoServico->atualizar($atualizaProduto);
 
     header("location:visualizar.php");

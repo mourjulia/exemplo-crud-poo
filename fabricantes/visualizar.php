@@ -5,7 +5,7 @@ use ExemploCrud\services\FabricanteServicos;
 require_once "../vendor/autoload.php";
 
 $fabricanteServicos = new FabricanteServicos();
-$listaDeFabricantes = $fabricanteServico->listarTodos();
+$listaDeFabricantes = $fabricanteServicos->listarTodos();
 $quantidade = count($listaDeFabricantes);
 
 ?>

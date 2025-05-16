@@ -1,8 +1,8 @@
 <?php
 
-use ExemploCrud\Helpers\Utils;
 use ExemploCrud\Models\Fabricante;
 use ExemploCrud\Services\FabricanteServicos;
+
 require_once "../vendor/autoload.php";
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
