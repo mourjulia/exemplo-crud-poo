@@ -6,6 +6,7 @@ use ExemploCrud\Database\conexaoBD;
 use ExemploCrud\Models\Fabricante;
 use PDO;
 use Exception;
+use ExemploCrud\Helpers\Utils;
 use Throwable;
 
 final class FabricanteServicos
@@ -27,6 +28,7 @@ final class FabricanteServicos
 
             return $consulta->fetchAll(PDO::FETCH_ASSOC);
         } catch (Throwable $erro) {
+            Utils::registrarLog($erro);
             throw new Exception("Erro ao carregar fabricantes:" . $erro->getMessage());
         }
     }
